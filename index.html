@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weather</title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection">
+    <link type="text/css" rel="stylesheet" href="css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <nav>
+                <div class="col s12 center">
+                    <div class="switch">
+                        <label>
+                            <span id="la-label">Los Angeles, CA</span>
+                            <input type="checkbox" id="check">
+                            <span class="lever"></span>
+                            <span id="roc-label">Rochester, NY</span>
+                        </label>
+                    </div>
+                </div>
+            </nav>
+
+            <div id="weather" class="col s12">
+                <div id="la">
+                    Loading LA's weather...
+                </div>
+
+                <div id="roc">
+                    Loading Rochester's weather...
+                </div>
+            </div>
+            
+            <footer>
+                <div class="col s12 center">
+                    <ul>
+                        <li>
+                        Made by
+                        <a href="http://ramzallan.me" class="blue-text text-darken-4">Ram Zallan</a>
+                        </li>
+                        <li id="updated"></li>
+                    </ul>
+                </div>                
+            </footer>
+        </div>
+
+    </div>
+
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
+    <script type="text/javascript" src="js/weather.js"></script>
+</body>
+
+</html>

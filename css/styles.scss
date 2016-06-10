@@ -1,0 +1,181 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+$blue: #47BAE6;
+$orange: #FCAD44;
+
+/* Just for design/testing purposes */
+
+* {
+    -webkit-transition: 0.3s all;
+    transition: 0.3s all;
+}
+
+.switch {
+    margin-top: 25px;
+}
+
+body,
+html {
+    font-family: "Montserrat", "Roboto", sans-serif;
+    -webkit-transition: 0.4s background;
+    transition: 0.4s background;
+    background: $blue;
+    height: 100%;
+    width: 100%;
+}
+
+label {
+    color: black;
+}
+
+nav {
+    background: none;
+    box-shadow: none;
+    border: none;
+}
+
+#weather {
+    text-align: center;
+    & .icon {
+        width: 300px;
+        height: 300px;
+        margin: 0;
+        padding: 0;
+        fill: red;
+        &[src$="28.svg"] {
+            margin-right: 25px;
+        }
+    }
+    & .temp {
+        font-weight: 700;
+        font-size: 120px;
+        line-height: 0.75;
+        margin-top: -70px;
+    }
+    & .city {
+        font-size: 25px;
+        letter-spacing: 6px;
+        line-height: 0.75;
+        font-weight: 700;
+    }
+    & .rn {
+        font-size: 24px;
+        font-weight: 300;
+    }
+    & .forecast {
+        & span {
+            background: #eee;
+        }
+        & p {
+            font-size: 16px;
+        }
+        &:first-of-type {
+            text-align: right;
+        }
+        &:last-of-type {
+            text-align: left;
+        }
+    }
+    & .date {
+        margin-top: -10px;
+        font-size: 16px;
+    }
+    & .extremes {
+        font-size: 18px;
+        margin-top: -25px;
+        &.small {
+            font-size: 14px;
+            margin-top: -18px;
+            display: block;
+            & li {
+                &:last-of-type::before {
+                    margin: 0;
+                }
+            }
+        }
+        & li {
+            display: inline-block;
+            /* High */
+            &:first-child {
+                color: darken($orange, 10%);
+            }
+            /* Low */
+            &:last-of-type {
+                color: $blue;
+                /* Slash seperator */
+                &::before {
+                    content: "/";
+                    color: black;
+                    margin: 0 5px;
+                }
+            }
+        }
+    }
+    /* Flip Styling */
+    perspective: 900px;
+    position: relative;
+    margin: 30px 0;
+    height: 600px;
+}
+
+#la,
+#roc {
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    min-height: 100%;
+    backface-visibility: hidden;
+    transform-style: preserve3d;
+    -webkit-transition: 0.4s all;
+    transition: 0.4s all;
+    background: white;
+    width: 90%;
+    max-width: 400px;
+    padding-bottom: 50px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 6px 6px rgba(0, 0, 0, 0.15);
+    right: calc(50% - 200px);
+}
+
+@media(max-width: 500px) {
+    #la,
+    #roc {
+        right: 15px;
+    }
+    label span {
+        font-size: 12px;
+    }
+    .small li {
+        font-size: 12px;
+    }
+    #weather {
+        height: 450px;
+        & .temp {
+            font-size: 80px;
+        }
+        & .icon {
+            width: 200px;
+            margin-top: -50px;
+        }
+        & .rn {
+            margin-top: -10px;
+        }
+        & .forecast {
+            margin-top: -20px;
+        }
+    }
+}
+
+#roc {
+    transform: rotateY(-180deg);
+}
+
+.flipped #roc {
+    transform: rotateY(0deg);
+}
+
+.flipped #la {
+    transform: rotateY(180deg);
+}
+
+footer .col {
+    margin-top: 80px;
+}
