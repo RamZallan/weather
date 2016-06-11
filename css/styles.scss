@@ -58,10 +58,17 @@ nav {
         font-weight: 700;
     }
     & .rn {
+        margin-top: -10px;
         font-size: 24px;
         font-weight: 300;
     }
     & .forecast {
+        margin-top: -10px;
+        & .thumb {
+            width: 60px;
+            margin-left: -6px;
+            margin-bottom: -30px;
+        }
         & span {
             background: #eee;
         }
@@ -79,6 +86,9 @@ nav {
         margin-top: -10px;
         font-size: 16px;
     }
+    & .time {
+        font-size: 16px;
+    }
     & .extremes {
         font-size: 18px;
         margin-top: -25px;
@@ -87,8 +97,11 @@ nav {
             margin-top: -18px;
             display: block;
             & li {
+                display: block;
+                line-height: 1;
                 &:last-of-type::before {
                     margin: 0;
+                    content: '';
                 }
             }
         }
@@ -139,6 +152,7 @@ nav {
     #la,
     #roc {
         right: 15px;
+        height: 475px;
     }
     label span {
         font-size: 12px;
@@ -150,6 +164,7 @@ nav {
         height: 450px;
         & .temp {
             font-size: 80px;
+            margin-top: -100px;
         }
         & .icon {
             width: 200px;
