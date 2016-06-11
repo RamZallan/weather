@@ -152,7 +152,7 @@ nav {
     #la,
     #roc {
         right: 15px;
-        height: 475px;
+        height: 515px;
     }
     label span {
         font-size: 12px;
@@ -175,6 +175,9 @@ nav {
         }
         & .forecast {
             margin-top: -20px;
+        }
+        & .thumb {
+            margin-left: -10px;
         }
     }
 }

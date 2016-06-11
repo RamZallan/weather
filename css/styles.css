@@ -149,7 +149,7 @@ nav {
   #la,
   #roc {
     right: 15px;
-    height: 475px; }
+    height: 515px; }
   /* line 157, C:/Users/ramz_000/Desktop/weather/css/styles.scss */
   label span {
     font-size: 12px; }
@@ -172,21 +172,24 @@ nav {
       margin-top: -10px; }
     /* line 176, C:/Users/ramz_000/Desktop/weather/css/styles.scss */
     #weather .forecast {
-      margin-top: -20px; } }
+      margin-top: -20px; }
+    /* line 179, C:/Users/ramz_000/Desktop/weather/css/styles.scss */
+    #weather .thumb {
+      margin-left: -10px; } }
 
-/* line 182, C:/Users/ramz_000/Desktop/weather/css/styles.scss */
+/* line 185, C:/Users/ramz_000/Desktop/weather/css/styles.scss */
 #roc {
   transform: rotateY(-180deg); }
 
-/* line 186, C:/Users/ramz_000/Desktop/weather/css/styles.scss */
+/* line 189, C:/Users/ramz_000/Desktop/weather/css/styles.scss */
 .flipped #roc {
   transform: rotateY(0deg); }
 
-/* line 190, C:/Users/ramz_000/Desktop/weather/css/styles.scss */
+/* line 193, C:/Users/ramz_000/Desktop/weather/css/styles.scss */
 .flipped #la {
   transform: rotateY(180deg); }
 
-/* line 194, C:/Users/ramz_000/Desktop/weather/css/styles.scss */
+/* line 197, C:/Users/ramz_000/Desktop/weather/css/styles.scss */
 footer .col {
   margin-top: 80px; }
 
