@@ -83,19 +83,17 @@ $(document).ready(function () {
     $checkbox.click(function () {
         /* If Rochester */
         if ($checkbox.is(':checked')) {
-            $('#roc').fadeIn(0);
+            $('#roc').fadeIn(10);
             $('#weather').addClass('flipped');
-            
-            $('#la').fadeOut(500);
+            $('#la').hide(400);
             $('body').css("background-color", orange);
             $('html').css("background-color", orange);
 
             /* If LA */
         } else {
-            $('#la').fadeIn(0);
+            $('#la').fadeIn(10);
             $('#weather').removeClass('flipped');
-            
-            $('#roc').fadeOut(500);
+            $('#roc').hide(400);
             $('body').css("background-color", blue);
             $('html').css("background-color", blue);
         }
