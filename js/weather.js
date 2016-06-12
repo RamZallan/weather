@@ -83,13 +83,19 @@ $(document).ready(function () {
     $checkbox.click(function () {
         /* If Rochester */
         if ($checkbox.is(':checked')) {
+            $('#roc').fadeIn(0);
             $('#weather').addClass('flipped');
+            
+            $('#la').fadeOut(500);
             $('body').css("background-color", orange);
             $('html').css("background-color", orange);
 
             /* If LA */
         } else {
+            $('#la').fadeIn(0);
             $('#weather').removeClass('flipped');
+            
+            $('#roc').fadeOut(500);
             $('body').css("background-color", blue);
             $('html').css("background-color", blue);
         }
