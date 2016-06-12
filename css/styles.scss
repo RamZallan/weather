@@ -10,7 +10,7 @@ $orange: #FCAD44;
 }
 
 .switch {
-    margin-top: 25px;
+    margin-top: 10px;
 }
 
 body,
@@ -126,8 +126,8 @@ nav {
     /* Flip Styling */
     perspective: 900px;
     position: relative;
-    margin: 30px 0;
     height: 600px;
+    margin-top: 10px;
 }
 
 #la,
@@ -195,5 +195,41 @@ nav {
 }
 
 footer .col {
-    margin-top: 80px;
+    &:first-of-type {
+        margin-top: 120px;
+    }
+    &:last-of-type {
+        margin-top: 25px;
+    }
+    & hr {
+        border-color: black;
+        width: 200px;
+    }
+}
+
+#customize {
+    display: none;
+    margin-top: 10px;
+    color: white;
+    & input {
+        width: 300px;
+        display: block;
+        border-bottom-color: white;
+        margin: 0 auto;
+        &::-webkit-input-placeholder {
+            color: #eee;
+        }
+        &:-moz-placeholder {
+            color: #eee;
+        }
+        &::-moz-placeholder {
+            color: #eee;
+        }
+        &:-ms-input-placeholder {
+            color: #eee;
+        }
+    }
+    & a {
+        margin-top: 10px;
+    }
 }
