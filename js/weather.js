@@ -4,6 +4,47 @@ var $checkbox = $('#check');
 var blue = "#47BAE6";
 var orange = "#FCAD44";
 
+/* loc = location, card = la/roc, tz = timezone (only la/roc) */
+function getWeather(loc, card, tz) {
+    $.simpleWeather({
+            location: loc,
+            woeid: '',
+            unit: 'f',
+            success: function (weather) {
+                /* Weather icon, with alt of current weather */
+                html = '<img class="icon" src="images/icons/' + weather.code + '.svg" alt=' + weather.currently.replace(/\s+/g, '_') + '>';
+                /* Temperature */
+                html += '<h2 class="temp">' + weather.temp + '&deg;</h2>';
+                /* City */
+                html += '<h3 class="city">' + weather.city.toUpperCase() + '</h3>';
+                /* Date & Time */
+                if(tz) {
+                    html += '<p class="date">' + moment().format('dddd[,] MMMM Do').toUpperCase() + '<br>' + moment().tz(tz).format('h:mm a') + '</p>'; + '</p>';
+                } else {
+                    html += '<p class="date">' + moment().format('dddd[,] MMMM Do').toUpperCase();
+                }
+                
+                /* Current conditions */
+                html += '<p class="rn">' + weather.currently + '<p>';
+                /* High & low */
+                html += '<ul class="extremes"><li>' + weather.high + '</li><li>' + weather.low + '</li></ul>'
+                    /* Forecasts */
+                    // Placeholder
+                html += '<div class="row"><div class="col s3"> </div>';
+                for (var i = 1; i < 4; i++) {
+                    html += '<div class="col s2 forecast"><img class="thumb" src="images/icons/' + weather.forecast[i].code + '.svg"><span><p>' + weather.forecast[i].day + '</p><ul class="extremes small"><li>' + weather.forecast[i].high + '</li><li>' + weather.forecast[i].low + '</li></ul></span></div>';
+                }
+                // Placeholder
+                html += '<div class="col s3"></div> </div>';
+                $('#' + card + '-label').text(weather.city + ', ' + weather.region);
+                $('#' + card).html(html);
+            },
+            error: function (error) {
+                $('#' + card).html('<p>' + error + '</p>');
+            }
+        });
+};
+
 $(document).ready(function () {
     $('#roc').hide(100);
     moment.tz.add([
@@ -14,147 +55,16 @@ $(document).ready(function () {
     if (localStorage.getItem("weather-location1") === null &&
         localStorage.getItem("weather-location2") === null) {
 
-        /* Defaults weather to LA */
-        $.simpleWeather({
-            location: 'Los Angeles, CA',
-            woeid: '',
-            unit: 'f',
-            success: function (weather) {
-                /* Weather icon, with alt of current weather */
-                html = '<img class="icon" src="images/icons/' + weather.code + '.svg" alt=' + weather.currently.replace(/\s+/g, '_') + '>';
-                /* Temperature */
-                html += '<h2 class="temp">' + weather.temp + '&deg;</h2>';
-                /* City */
-                html += '<h3 class="city">' + weather.city.toUpperCase() + '</h3>';
-                /* Date & Time */
-                html += '<p class="date">' + moment().format('dddd[,] MMMM Do').toUpperCase() + '<br>' + moment().tz("America/Los_Angeles").format('h:mm a') + '</p>'; + '</p>';
-                /* Current conditions */
-                html += '<p class="rn">' + weather.currently + '<p>';
-                /* High & low */
-                html += '<ul class="extremes"><li>' + weather.high + '</li><li>' + weather.low + '</li></ul>'
-                    /* Forecasts */
-                    // Placeholder
-                html += '<div class="row"><div class="col s3"> </div>';
-                for (var i = 1; i < 4; i++) {
-                    html += '<div class="col s2 forecast"><img class="thumb" src="images/icons/' + weather.forecast[i].code + '.svg"><span><p>' + weather.forecast[i].day + '</p><ul class="extremes small"><li>' + weather.forecast[i].high + '</li><li>' + weather.forecast[i].low + '</li></ul></span></div>';
-                }
-                // Placeholder
-                html += '<div class="col s3"></div> </div>';
-
-                $("#la").html(html);
-            },
-            error: function (error) {
-                $("#la").html('<p>' + error + '</p>');
-            }
-        });
-
-        $.simpleWeather({
-            location: 'Rochester, NY',
-            woeid: '',
-            unit: 'f',
-            success: function (weather) {
-                /* Weather icon, with alt of current weather */
-                html = '<img class="icon" src="images/icons/' + weather.code + '.svg" alt=' + weather.currently.replace(/\s+/g, '_') + '>';
-                /* Temperature */
-                html += '<h2 class="temp">' + weather.temp + '&deg;</h2>';
-                /* City */
-                html += '<h3 class="city">' + weather.city.toUpperCase() + '</h3>';
-                /* Date */
-                html += '<p class="date">' + moment().format('dddd[,] MMMM Do').toUpperCase() + '<br>' + moment().tz("America/New_York").format('h:mm a') + '</p>'; + '</p>';
-                /* Current conditions */
-                html += '<p class="rn">' + weather.currently + '<p>';
-                /* High & low */
-                html += '<ul class="extremes"><li>' + weather.high + '</li><li>' + weather.low + '</li></ul>'
-                    /* Forecasts */
-                    // Placeholder
-                html += '<div class="row"><div class="col s3"> </div>';
-                for (var i = 1; i < 4; i++) {
-                    html += '<div class="col s2 forecast"><img class="thumb" src="images/icons/' + weather.forecast[i].code + '.svg"><span><p>' + weather.forecast[i].day + '</p><ul class="extremes small"><li>' + weather.forecast[i].high + '</li><li>' + weather.forecast[i].low + '</li></ul></span></div>';
-                }
-                // Placeholder
-                html += '<div class="col s3"></div> </div>';
-
-                $("#roc").html(html);
-            },
-            error: function (error) {
-                $("#roc").html('<p>' + error + '</p>');
-            }
-        });
-
+        getWeather('Los Angeles, CA', 'la', 'America/Los_Angeles');
+        getWeather('Rochester, NY', 'roc', 'America/New_York');
 
         /* If user has localStorage of locations */
     } else {
         var storedLocation1 = localStorage.getItem("weather-location1");
         var storedLocation2 = localStorage.getItem("weather-location2");
         
-        $.simpleWeather({
-            location: storedLocation1,
-            woeid: '',
-            unit: 'f',
-            success: function (weather) {
-                /* Weather icon, with alt of current weather */
-                html = '<img class="icon" src="images/icons/' + weather.code + '.svg" alt=' + weather.currently.replace(/\s+/g, '_') + '>';
-                /* Temperature */
-                html += '<h2 class="temp">' + weather.temp + '&deg;</h2>';
-                /* City */
-                html += '<h3 class="city">' + weather.city.toUpperCase() + '</h3>';
-                /* Date & Time */
-                html += '<p class="date">' + moment().format('dddd[,] MMMM Do').toUpperCase();
-                /* Current conditions */
-                html += '<p class="rn">' + weather.currently + '<p>';
-                /* High & low */
-                html += '<ul class="extremes"><li>' + weather.high + '</li><li>' + weather.low + '</li></ul>'
-                    /* Forecasts */
-                    // Placeholder
-                html += '<div class="row"><div class="col s3"> </div>';
-                for (var i = 1; i < 4; i++) {
-                    html += '<div class="col s2 forecast"><img class="thumb" src="images/icons/' + weather.forecast[i].code + '.svg"><span><p>' + weather.forecast[i].day + '</p><ul class="extremes small"><li>' + weather.forecast[i].high + '</li><li>' + weather.forecast[i].low + '</li></ul></span></div>';
-                }
-                // Placeholder
-                html += '<div class="col s3"></div> </div>';
-                $('#la-label').text(weather.city + ', ' + weather.region);
-                $("#la").html(html);
-            },
-            error: function (error) {
-                $("#la").html('<p>' + error + '</p>');
-            }
-        });
-
-
-
-
-        $.simpleWeather({
-            location: storedLocation2,
-            woeid: '',
-            unit: 'f',
-            success: function (weather) {
-                /* Weather icon, with alt of current weather */
-                html = '<img class="icon" src="images/icons/' + weather.code + '.svg" alt=' + weather.currently.replace(/\s+/g, '_') + '>';
-                /* Temperature */
-                html += '<h2 class="temp">' + weather.temp + '&deg;</h2>';
-                /* City */
-                html += '<h3 class="city">' + weather.city.toUpperCase() + '</h3>';
-                /* Date & Time */
-                html += '<p class="date">' + moment().format('dddd[,] MMMM Do').toUpperCase();
-                /* Current conditions */
-                html += '<p class="rn">' + weather.currently + '<p>';
-                /* High & low */
-                html += '<ul class="extremes"><li>' + weather.high + '</li><li>' + weather.low + '</li></ul>'
-                    /* Forecasts */
-                    // Placeholder
-                html += '<div class="row"><div class="col s3"> </div>';
-                for (var i = 1; i < 4; i++) {
-                    html += '<div class="col s2 forecast"><img class="thumb" src="images/icons/' + weather.forecast[i].code + '.svg"><span><p>' + weather.forecast[i].day + '</p><ul class="extremes small"><li>' + weather.forecast[i].high + '</li><li>' + weather.forecast[i].low + '</li></ul></span></div>';
-                }
-                // Placeholder
-                html += '<div class="col s3"></div> </div>';
-                $('#roc-label').text(weather.city + ', ' + weather.region);
-                $("#roc").html(html);
-            },
-            error: function (error) {
-                $("#roc").html('<p>' + error + '</p>');
-            }
-        });
+        getWeather(storedLocation1, 'la');
+        getWeather(storedLocation2, 'roc');
         
         $('#custom').after('<br><a id="reset" class="waves-effect waves-dark btn grey darken-3">Reset Saved Locations</a>');
         $('#reset').click(function() {
@@ -192,76 +102,8 @@ $(document).ready(function () {
         $('#save').slideDown();
         var firstLocation = $('#firstLocation').val();
         var secondLocation = $('#secondLocation').val();
-
-
-        $.simpleWeather({
-            location: firstLocation,
-            woeid: '',
-            unit: 'f',
-            success: function (weather) {
-                /* Weather icon, with alt of current weather */
-                html = '<img class="icon" src="images/icons/' + weather.code + '.svg" alt=' + weather.currently.replace(/\s+/g, '_') + '>';
-                /* Temperature */
-                html += '<h2 class="temp">' + weather.temp + '&deg;</h2>';
-                /* City */
-                html += '<h3 class="city">' + weather.city.toUpperCase() + '</h3>';
-                /* Date & Time */
-                html += '<p class="date">' + moment().format('dddd[,] MMMM Do').toUpperCase();
-                /* Current conditions */
-                html += '<p class="rn">' + weather.currently + '<p>';
-                /* High & low */
-                html += '<ul class="extremes"><li>' + weather.high + '</li><li>' + weather.low + '</li></ul>'
-                    /* Forecasts */
-                    // Placeholder
-                html += '<div class="row"><div class="col s3"> </div>';
-                for (var i = 1; i < 4; i++) {
-                    html += '<div class="col s2 forecast"><img class="thumb" src="images/icons/' + weather.forecast[i].code + '.svg"><span><p>' + weather.forecast[i].day + '</p><ul class="extremes small"><li>' + weather.forecast[i].high + '</li><li>' + weather.forecast[i].low + '</li></ul></span></div>';
-                }
-                // Placeholder
-                html += '<div class="col s3"></div> </div>';
-                $('#la-label').text(weather.city + ', ' + weather.region);
-                $("#la").html(html);
-            },
-            error: function (error) {
-                $("#la").html('<p>' + error + '</p>');
-            }
-        });
-
-
-
-
-        $.simpleWeather({
-            location: secondLocation,
-            woeid: '',
-            unit: 'f',
-            success: function (weather) {
-                /* Weather icon, with alt of current weather */
-                html = '<img class="icon" src="images/icons/' + weather.code + '.svg" alt=' + weather.currently.replace(/\s+/g, '_') + '>';
-                /* Temperature */
-                html += '<h2 class="temp">' + weather.temp + '&deg;</h2>';
-                /* City */
-                html += '<h3 class="city">' + weather.city.toUpperCase() + '</h3>';
-                /* Date & Time */
-                html += '<p class="date">' + moment().format('dddd[,] MMMM Do').toUpperCase();
-                /* Current conditions */
-                html += '<p class="rn">' + weather.currently + '<p>';
-                /* High & low */
-                html += '<ul class="extremes"><li>' + weather.high + '</li><li>' + weather.low + '</li></ul>'
-                    /* Forecasts */
-                    // Placeholder
-                html += '<div class="row"><div class="col s3"> </div>';
-                for (var i = 1; i < 4; i++) {
-                    html += '<div class="col s2 forecast"><img class="thumb" src="images/icons/' + weather.forecast[i].code + '.svg"><span><p>' + weather.forecast[i].day + '</p><ul class="extremes small"><li>' + weather.forecast[i].high + '</li><li>' + weather.forecast[i].low + '</li></ul></span></div>';
-                }
-                // Placeholder
-                html += '<div class="col s3"></div> </div>';
-                $('#roc-label').text(weather.city + ', ' + weather.region);
-                $("#roc").html(html);
-            },
-            error: function (error) {
-                $("#roc").html('<p>' + error + '</p>');
-            }
-        });
+        getWeather(firstLocation, 'la');
+        getWeather(secondLocation, 'roc');
 
     });
 
