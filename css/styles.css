@@ -227,6 +227,16 @@ footer .col hr {
       color: #eee; }
   /* line 232, C:/Users/ramz_000/Desktop/weather/css/styles.scss */
   #customize a {
-    margin-top: 10px; }
+    display: block;
+    max-width: 175px;
+    margin: 10px auto 0 auto; }
+    /* line 236, C:/Users/ramz_000/Desktop/weather/css/styles.scss */
+    #customize a#save {
+      display: none;
+      color: black; }
+
+/* line 243, C:/Users/ramz_000/Desktop/weather/css/styles.scss */
+#reset {
+  margin-top: 10px; }
 
 /*# sourceMappingURL=styles.css.map */

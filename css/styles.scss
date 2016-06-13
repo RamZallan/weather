@@ -230,6 +230,16 @@ footer .col {
         }
     }
     & a {
-        margin-top: 10px;
+        display: block;
+        max-width: 175px;
+        margin: 10px auto 0 auto;
+        &#save {
+            display: none;
+            color: black;
+        }
     }
+}
+
+#reset {
+    margin-top: 10px;
 }
