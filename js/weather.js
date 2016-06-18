@@ -93,6 +93,7 @@ $(document).ready(function () {
             $('#roc').hide(400);
             $('body').css("background-color", blue);
             $('html').css("background-color", blue);
+            $('meta[name=theme-color]').attr('content', '#47bae6');
         }
     });
 
