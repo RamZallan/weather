@@ -83,7 +83,8 @@ $(document).ready(function () {
             $('#la').hide(400);
             $('body').css("background-color", orange);
             $('html').css("background-color", orange);
-            $('head').append( '<meta name="theme-color" content="#FCAD44">' );
+            $('meta[name=theme-color]').attr('content', '#FCAD44');
+
 
             /* If LA */
         } else {
