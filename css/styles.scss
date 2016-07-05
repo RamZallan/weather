@@ -260,3 +260,23 @@ footer .col {
     margin: 0;
     font-size: 18px;
 }
+
+#save {
+    line-height: 1;
+}
+
+#about {
+    background: #222;
+    color: #FFF;
+    padding: 20px;
+    text-align: center;
+    font-size: 16px;
+    & p {
+        width: 50%;
+        max-width: 600px;
+        margin: 0 auto;
+        & br {
+            line-height: 2.5;
+        }
+    }
+}

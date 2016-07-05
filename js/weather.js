@@ -47,6 +47,7 @@ function getWeather(loc, card, tz) {
 
 $(document).ready(function () {
     $('#roc').hide(100);
+    $('#about').hide();
     moment.tz.add([
     'America/Los_Angeles|PST PDT|80 70|0101|1Lzm0 1zb0 Op0',
     'America/New_York|EST EDT|50 40|0101|1Lz50 1zb0 Op0'
@@ -109,7 +110,8 @@ $(document).ready(function () {
         getWeather(secondLocation, 'roc');
 
     });
-
+    
+    /* Saves custom locations to localStorage */
     $('#save').click(function () {
         if ($('#firstLocation').val() && $('#secondLocation').val()) {
             localStorage.setItem('weather-location1', $('#firstLocation').val().toString());
@@ -121,4 +123,10 @@ $(document).ready(function () {
         }
     });
 
+    /* Toggles "About the Site" section */
+    $('#aboutLink').click(function(e) {
+        e.preventDefault();
+        $('#about').slideToggle(500);
+    });
+    
 });

@@ -255,4 +255,24 @@ footer .col hr {
   margin: 0;
   font-size: 18px; }
 
+/* line 264, C:/Users/ramz_000/Desktop/weather/css/styles.scss */
+#save {
+  line-height: 1; }
+
+/* line 268, C:/Users/ramz_000/Desktop/weather/css/styles.scss */
+#about {
+  background: #222;
+  color: #FFF;
+  padding: 20px;
+  text-align: center;
+  font-size: 16px; }
+  /* line 274, C:/Users/ramz_000/Desktop/weather/css/styles.scss */
+  #about p {
+    width: 50%;
+    max-width: 600px;
+    margin: 0 auto; }
+    /* line 278, C:/Users/ramz_000/Desktop/weather/css/styles.scss */
+    #about p br {
+      line-height: 2.5; }
+
 /*# sourceMappingURL=styles.css.map */
