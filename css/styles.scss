@@ -63,7 +63,7 @@ nav {
         margin-top: -10px;
         & .thumb {
             width: 60px;
-            margin-left: -5px;
+            margin-left: calc(50% - 30px);
             margin-bottom: -30px;
         }
         & span {
@@ -172,6 +172,9 @@ nav {
         }
         & .forecast {
             margin-top: -20px;
+            & p {
+                font-size: 14px;
+            }
         }
         & .thumb {
             margin-right: 20px;
