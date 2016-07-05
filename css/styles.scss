@@ -9,7 +9,6 @@ $orange: #FCAD44;
     transition: 0.3s all;
 }
 
-
 body,
 html {
     font-family: "Montserrat", "Roboto", sans-serif;
@@ -186,20 +185,17 @@ nav {
     .container #subtitle {
         font-size: 12px;
     }
-}
 
+}
 #roc {
     transform: rotateY(-180deg);
 }
-
 .flipped #roc {
     transform: rotateY(0deg);
 }
-
 .flipped #la {
     transform: rotateY(180deg);
 }
-
 footer .col {
     &:first-of-type {
         margin-top: 120px;
@@ -212,7 +208,6 @@ footer .col {
         width: 200px;
     }
 }
-
 #customize {
     display: none;
     margin-top: 10px;
@@ -225,12 +220,15 @@ footer .col {
         &::-webkit-input-placeholder {
             color: #eee;
         }
+        
         &:-moz-placeholder {
             color: #eee;
         }
+        
         &::-moz-placeholder {
             color: #eee;
         }
+        
         &:-ms-input-placeholder {
             color: #eee;
         }
@@ -245,11 +243,9 @@ footer .col {
         }
     }
 }
-
 #reset {
     margin-top: 10px;
 }
-
 #title {
     font-size: 60px;
     color: white;
@@ -257,17 +253,14 @@ footer .col {
     margin-top: 10px;
     line-height: 1;
 }
-
 #subtitle {
     color: #eee;
     margin: 0;
     font-size: 18px;
 }
-
 #save {
     line-height: 1;
 }
-
 #about {
     background: #222;
     color: #FFF;
@@ -275,7 +268,7 @@ footer .col {
     text-align: center;
     font-size: 16px;
     & p {
-        width: 50%;
+        width: 90%;
         max-width: 600px;
         margin: 0 auto;
         & br {
