@@ -26,6 +26,10 @@ function getWeather(loc, card, tz) {
                 
                 /* Current conditions */
                 html += '<p class="rn">' + weather.currently + '<p>';
+                
+                /* Current Humidity */
+                html += '<p class="humidity"><img class="droplet" src="images/icons/droplet.svg"><span>' + weather.humidity + '%</span></p>'
+                
                 /* High & low */
                 html += '<ul class="extremes"><li>' + weather.high + '</li><li>' + weather.low + '</li></ul>'
                     /* Forecasts */
